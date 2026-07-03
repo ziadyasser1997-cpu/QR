@@ -66,5 +66,27 @@
         <h1>مبروك، كسبت مشروب هدية</h1>
         <p class="subtitle">Congratulations, you won a free drink</p>
     </div>
+
+     <script>
+        (function () {
+            const key = 'oneTimeVisit2026';
+            try {
+                if (localStorage.getItem(key)) {
+                    document.body.innerHTML = `
+                        <div class="card">
+                            <div class="emoji">🔒</div>
+                            <h1>تم الدخول من قبل</h1>
+                            <p class="subtitle">لا يمكنك فتح هذه الصفحة مرة أخرى من نفس المتصفح</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                localStorage.setItem(key, 'true');
+            } catch (error) {
+                console.warn('One-time visit check failed:', error);
+            }
+        })();
+    </script>
 </body>
 </html>
